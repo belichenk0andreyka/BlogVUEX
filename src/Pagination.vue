@@ -6,7 +6,7 @@
         <img src="src/assets/nature.jpg">
         <p class="boldText"> {{ post.title }}</p>
         </router-link>
-        <p> {{ post.body }}</p>
+        <p> {{ post.body }}</p> 
       </li>
       </ul>
         <div class="allpagination">
@@ -249,5 +249,5 @@
         border-bottom: 5px solid #494949;
         width: 80%;
         margin-left: 175px;
-      }                                     
+      }
     </style>

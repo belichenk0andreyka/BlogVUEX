@@ -3,11 +3,11 @@
     <div class="tableChange">
       <div>
         <p class="editText">Edit your title:</p>
-        <p><textarea  v-model="title" class="changeTitle"></textarea></p>
+        <p><textarea  v-model="dTitle" class="changeTitle"></textarea></p>
         <p class="editText">Edit your post</p>
-        <p><textarea  v-model="body" class="changeBody"></textarea></p>
+        <p><textarea  v-model="dBody" class="changeBody"></textarea></p>
       </div>
-      <router-link :to="{ name:'detail', params: { title: title, body: body} }"><button type="button" @click="changePost(id, title, body)" class="apply">To apply</button></router-link>
+      <router-link :to="{ name:'detail', params: { title: dTitle, body: dBody} }"><button type="button" @click="changePost(id, title, body)" class="apply">To apply</button></router-link>
     </div>
     <img src="/src/assets/nature.jpg" >
   </div>
@@ -20,6 +20,12 @@
       id: Number,
       title: String,
       body: String,
+    },
+    data(){
+      return{
+        dTitle: this.title,
+        dBody: this.body
+      }
     },
     // created: function() {
     //   var postId = this.$route.params.id
@@ -46,24 +52,19 @@
     border: 1px solid #000000;
     border-radius: 10px;
   }
-
 .editText{
   margin-left: 40px;
 }
-
   .changeTitle{
     height: 75px;
   }
-
   .changeBody{
     height: 150px;
   }
-
   .post p textarea{
     width: 400px;
     margin-left: 20px
   }
-
   .post button{
     margin: 0px 0px 0px 10px;
   }
