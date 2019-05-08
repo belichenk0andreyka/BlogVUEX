@@ -2,11 +2,13 @@
   <div class = "app">
     <ul>
       <li v-for="(post, index) in paginatedData" class="post" :key="index">
-        <router-link :to="{ name: 'detail', params: {id: post.id, title: post.title, body: post.body} }">
-        <img src="src/assets/nature.jpg">
-        <p class="boldText"> {{ post.title }}</p>
-        </router-link>
+        <div @click="postInHistory">
+          <router-link :to="{ name: 'detail', params: {id: post.id, title: post.title, body: post.body} }">
+          <img src="src/assets/nature.jpg">
+          <p class="boldText"> {{ post.title }}</p>
+          </router-link>
         <p> {{ post.body }}</p>
+        </div>
       </li>
       </ul>
         <div class="allpagination">
@@ -58,7 +60,14 @@
             axios.get(`https://jsonplaceholder.typicode.com/posts`).then(response => {
               this.posts = response.data
             })
+          },
+          postInHistory(){
+            const hPost = {
+            title: this.post.title,
+            body: this.post.body
           }
+            eventEmitter.$emit('historyPost', hPost)
+          },
         },
         created(){
           eventEmitter.$on('messageSave', (string) => {
@@ -77,78 +86,12 @@
       }
     </script>
 
-    <style>
+    <style scoped>
       .app{
         background-color: #FFFFFF;
         width: 100%;
         height: 100%;
         /* background-size: cover; */
-      }
-      .header{
-        width: 80%;
-        height:100%;
-        border-bottom: 5px solid #494949;
-        margin-left: 175px;
-      }
-      .header_input_search{
-        margin: 60px 0px 0px  150px;
-        position: absolute;
-        width:340px;
-        height: 25px;
-        padding-left: 10px;
-      }
-      .header_input_search::placeholder{
-        color: #000000;
-        padding-right: 10px;
-        text-align: right;
-      }
-      .header img{
-        width: 200px;
-        height: 100px;
-        margin-left: 650px;
-      }
-      .header_div_inputs{
-        float: right;
-        margin: 10px 245px 0px 0px;
-      }
-      .created, .createBody{
-        width: 340px;
-        height: 25px;
-        font-size: 20px;
-        margin-bottom: -15px;
-      }
-      .createBody{
-        margin-top: -15px;
-      }
-      .addPost {
-        position: relative;
-        display: inline-block;
-        font-size: 90%;
-        font-weight: 700;
-        color: rgb(209,209,217);
-        text-decoration: none;
-        text-shadow: 0 -1px 2px rgba(0,0,0,.2);
-        padding: .5em 1em;
-        outline: none;
-        width: 350px;
-        margin: -15px 0px 10px 920px;
-        border-radius: 3px;
-        background: #2278BA;
-        box-shadow:
-        0 1px rgba(255,255,255,.2) inset,
-        0 3px 5px rgba(0,1,6,.5),
-        0 0 1px 1px rgba(0,1,6,.2);
-        transition: .2s ease-in-out;
-      }
-      .addPost:hover:not(:active) {
-        background: #2FA5BA;
-      }
-      .addPost:active {
-        top: 1px;
-        box-shadow:
-        0 0 1px rgba(0,0,0,.5) inset,
-        0 2px 3px rgba(0,0,0,.5) inset,
-        0 1px 1px rgba(255,255,255,.1);
       }
 
       .boldText{
@@ -174,63 +117,6 @@
         width: 500px;
         /* border: 1px solid #4A535C; */
         list-style-type: none;
-      }
-      .buttonDelete{
-        background-color: white;
-        color: #38414A;
-        border: 2px solid #A52A2A;
-        font-weight: 550;
-        font-size: 17px;
-        border-radius: 2px;
-        box-shadow: -1px 3px 28px 6px rgba(0,0,0,0.17);
-        margin-right: 10px;
-        transition-duration: 0.6s;
-        float: left;
-      }
-      .buttonDelete:hover{
-        background-color: #A52A2A;
-        color: white;
-        transition-duration: 0.6s;
-      }
-      .buttonChange{
-        background-color: #3C97E1;
-        color: #38414A;
-        border: 2px solid #3C97E1;
-        font-weight: 550;
-        font-size: 17px;
-        border-radius: 2px;
-        box-shadow: -1px 3px 28px 6px rgba(0,0,0,0.17);
-        margin-right: 10px;
-        float: left;
-        position: relative;
-      }
-      .buttonChange:hover{
-        background-color: white;
-        color: black;
-        transition-duration: 0.6s;
-      }
-      .modalWindow{
-        margin-left: 50px;
-      }
-      .changePost{
-        width: 195px;
-        margin-right: 6px;
-        height: 30px;
-        box-shadow: -1px 3px 19px -7px rgba(0,0,0,0.13);
-      }
-      .apply{
-        margin: 10px 0px 0px 410px;
-        background-color: #4CAF50;
-        color: #000000;
-        font-size: 18px;
-        box-shadow: -1px 3px 28px 6px rgba(0,0,0,0.17);
-        transition-duration: 0.6s;
-        border-radius: 1px;
-        border: 1px solid #949494;
-      }
-      .apply:hover{
-        background-color: #4CAF50;
-        color: white;
       }
       .prev{
         float: left;

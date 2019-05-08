@@ -21,10 +21,12 @@ var router = new VueRouter({
     },
   ]
 })
+export const eventEmitter = new Vue()
 
 Vue.component('header-self',  Header)
 Vue.component('app-history',  History)
-export const eventEmitter = new Vue()
+
+
 
 new Vue({
   el: '#app',

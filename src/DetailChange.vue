@@ -68,4 +68,18 @@
     position: relative;
     margin: -450px 0px 0px 900px;
   }
+  .apply{
+    margin: 10px 0px 0px 410px;
+    background-color: #4CAF50;
+    color: #000000;
+    font-size: 18px;
+    box-shadow: -1px 3px 28px 6px rgba(0,0,0,0.17);
+    transition-duration: 0.6s;
+    border-radius: 1px;
+    border: 1px solid #949494;
+  }
+  .apply:hover{
+    background-color: #4CAF50;
+    color: white;
+  }
 </style>
