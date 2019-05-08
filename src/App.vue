@@ -2,13 +2,14 @@
   <div id="app">
     <header-self></header-self>
     <router-view></router-view>
+    <app-history></app-history>
   </div>
 </template>
 
 <script>
 
 export default {
-  components: { 
+  components: {
     name: 'app',
   }
 }

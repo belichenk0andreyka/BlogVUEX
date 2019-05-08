@@ -27,6 +27,13 @@
       saveMessage(){
         eventEmitter.$emit('messageSave', this.search)
       },
+      addPost(){
+        const post = {
+        title: this.createTitle,
+        body: this.createBody
+      }
+        eventEmitter.$emit('postAdd', post)
+      },
     }
   }
 </script>

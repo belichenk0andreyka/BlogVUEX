@@ -24,7 +24,7 @@
     </template>
 
     <script>
-      import {mapState} from 'vuex'
+      import axios from 'axios';
       import {eventEmitter} from './main'
       export default {
         name: 'app',
@@ -33,16 +33,11 @@
             current: null,
             page: 0,
             visiblePostID: '',
-            pSearch: ''
+            pSearch: '',
+            posts: []
           }
         },
-        mounted(){
-          this.$store.dispatch('loadPosts')
-        },
         computed: {
-          ...mapState([
-          'posts'
-          ]),
           evenPosts: function(posts){
             return Math.ceil(this.posts.length/6);
           },
@@ -58,10 +53,26 @@
             });
           },
         },
+        methods: {
+          getData() {
+            axios.get(`https://jsonplaceholder.typicode.com/posts`).then(response => {
+              this.posts = response.data
+            })
+          }
+        },
         created(){
           eventEmitter.$on('messageSave', (string) => {
             this.pSearch = string
           }),
+          eventEmitter.$on('postAdd', (post) => {
+            axios.post('http://jsonplaceholder.typicode.com/posts/', {
+              title: post.title,
+              body: post.body
+            }).then((response) => {
+              this.posts.unshift(response.data)
+            })
+          }),
+          this.getData()
         }
       }
     </script>
@@ -148,7 +159,7 @@
         margin-left: 170px;
         display: grid;
         grid-template-columns: 500px 500px 500px;
-        grid-template-rows: 400px 400px;
+        grid-template-rows: 450px 400px;
       }
       ul li p{
         width: 450px;
@@ -159,7 +170,7 @@
         height:250px;
       }
       .post{
-        height: 400px;
+        height: 500px;
         width: 500px;
         /* border: 1px solid #4A535C; */
         list-style-type: none;
