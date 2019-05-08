@@ -1,6 +1,6 @@
 <template>
 <div class="header">
-  <input type="text" v-model="search" class="header_input_search" placeholder="Search" @keyup.enter="saveMessage" />
+  <input type="text" v-model="search" class="header_input_search" placeholder="Search" @input="saveMessage" />
   <img src="src/assets/milk.png">
   <div class="header_div_inputs">
     <input type="text" v-model="createTitle" class="created"/>
@@ -11,7 +11,9 @@
 </template>
 
 <script>
-  import axios from 'axios'; 
+  import axios from 'axios';
+  import {eventEmitter} from './main'
+
   export default {
     name: 'Header',
     data () {
@@ -21,7 +23,11 @@
         createBody: '',
       }
     },
-
+    methods:{
+      saveMessage(){
+        eventEmitter.$emit('messageSave', this.search)
+      },
+    }
   }
 </script>
 

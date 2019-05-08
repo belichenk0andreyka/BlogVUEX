@@ -23,6 +23,7 @@ var router = new VueRouter({
 })
 
 Vue.component('header-self',  Header)
+export const eventEmitter = new Vue()
 
 new Vue({
   el: '#app',

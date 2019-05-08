@@ -27,12 +27,6 @@
         dBody: this.body
       }
     },
-    // created: function() {
-    //   var postId = this.$route.params.id
-    //   this.post = this.posts[this.$route.params.id]
-    //   this.post = this.posts[this.$route.params.title]
-    //   this.post = this.posts[this.$route.params.body]
-    // },
     methods: {
       changePost(id, title, body) {
              axios.put('http://jsonplaceholder.typicode.com/posts/' + id, {
@@ -44,11 +38,11 @@
 }
 </script>
 
-<style>
+<style scoped>
   .tableChange{
     width: 450px;
     height: 400px;
-    margin: 70px 0px 0px 100px;
+    margin: 75px 0px 0px 250px;
     border: 1px solid #000000;
     border-radius: 10px;
   }
@@ -72,6 +66,6 @@
     width: 800px;
     height: 450px;
     position: relative;
-    margin: -400px 0px 0px 700px;
+    margin: -450px 0px 0px 900px;
   }
 </style>

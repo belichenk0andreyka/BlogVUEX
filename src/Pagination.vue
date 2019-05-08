@@ -6,7 +6,7 @@
         <img src="src/assets/nature.jpg">
         <p class="boldText"> {{ post.title }}</p>
         </router-link>
-        <p> {{ post.body }}</p> 
+        <p> {{ post.body }}</p>
       </li>
       </ul>
         <div class="allpagination">
@@ -25,6 +25,7 @@
 
     <script>
       import {mapState} from 'vuex'
+      import {eventEmitter} from './main'
       export default {
         name: 'app',
         data () {
@@ -32,6 +33,7 @@
             current: null,
             page: 0,
             visiblePostID: '',
+            pSearch: ''
           }
         },
         mounted(){
@@ -52,9 +54,14 @@
           },
           filteredPosts() {
             return this.posts.filter((post) => {
-              return post.title.match(this.search);
+              return post.title.match(this.pSearch);
             });
           },
+        },
+        created(){
+          eventEmitter.$on('messageSave', (string) => {
+            this.pSearch = string
+          }),
         }
       }
     </script>

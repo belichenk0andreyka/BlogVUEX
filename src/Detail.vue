@@ -1,18 +1,17 @@
 <template>
   <div class="post">
     <img src="/src/assets/nature.jpg" class="post_img_nature" >
-    <h2>{{ id }}</h2>
-    <h2>{{ title }}</h2>
-    <p>{{ body }}</p>
+    <div class="information">
+      <h2>{{ id }}</h2>
+      <h2>{{ title }}</h2>
+      <p>{{ body }}</p>
+
     <router-link :to="{ name: 'pagination' }"><button  @click="deleteData(id)" class="buttonDelete">Delete</button></router-link>
     <router-link :to="{ name: 'detailChange', params: {id: id, title: title, body: body} }"><button @click="visiblePostID = id" class="buttonChange">Change</button></router-link>
-    <!-- <div v-if="visiblePostID === id" class="modalWindow">
-    <div><input  v-model="title" class="changePost"><input  v-model="body" class="changePost"></div>
-    <button type="button" @click="changePost(id, title, body)" class="apply">To apply</button>
-  </div> -->
   <router-link :to="{ name: 'pagination' }">
     <p>Go to Posts</p>
   </router-link>
+  </div>
   </div>
 </template>
 
@@ -54,13 +53,18 @@
 }
 </script>
 
-<style>
+<style scoped>
   .post{
     margin-top: 30px;
+    position: absolute;
   }
-
+  .information{
+    margin: 620px 0px 0px 30px;
+  }
   .post_img_nature{
     width: 1000px;
     height: 600px;
+    margin-left: 30px;
+    position: absolute;
   }
 </style>
