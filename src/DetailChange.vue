@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <div class="tableChange">
+    <div class="tableChange"> 
       <div>
         <p class="editText">Edit your title:</p>
         <p><textarea  v-model="dTitle" class="changeTitle"></textarea></p>
