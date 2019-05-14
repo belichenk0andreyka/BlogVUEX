@@ -10,7 +10,9 @@ export default new vuex.Store({
     posts: [],
     sSearch: '',
     title: '',
-    body: ''
+    body: '',
+    id: Number,
+    historyPosts: []
   },
   actions: {
     loadPosts ({commit}) {
@@ -24,13 +26,22 @@ export default new vuex.Store({
     transforTitleAndBody({commit}, payload){ // мутация которая изменяет сосотаяние в sSearch
       const todo = {
         title: payload.sTitle,
-        body: payload.sBody
+        body: payload.sBody,
+        id: payload.sId
       }
       axios.post('http://jsonplaceholder.typicode.com/posts', todo).then(_ => {
         commit('ADD_TODO', todo)
       }).catch(function (error) {
           console.log(error);
         })
+    },
+    transforPostToHistoryComp({commit}, payload){ // мутация которая изменяет сосотаяние в sSearch
+      const todohistory = {
+        title: payload.pTitle,
+        body: payload.pBody,
+        id: payload.pId
+      }
+      commit('ADD_TODO_HISTORY', todohistory)
     }
   },
   mutations: {
@@ -42,6 +53,9 @@ export default new vuex.Store({
     },
     ADD_TODO (state, todoObject) {
       state.posts.unshift(todoObject)
+    },
+    ADD_TODO_HISTORY (state, todohistoryObject) {
+      state.historyPosts.unshift(todohistoryObject)
     },
   },
 })

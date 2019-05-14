@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <header-self></header-self>
+    <app-header></app-header>
     <router-view></router-view>
+    <app-history></app-history>
   </div>
 </template>
 
 <script>
+  import Header from './Header.vue'
+  import History from './History.vue'
 
-export default {
+export default{
   components: {
-    name: 'app',
-  }
+    'app-header': Header,
+    'app-history': History
+  },
 }
+
+
 </script>
 
 <style>

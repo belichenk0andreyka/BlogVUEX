@@ -2,7 +2,7 @@
   <div class = "app">
     <ul>
       <li v-for="(post, index) in paginatedData" class="post" :key="index">
-        <router-link :to="{ name: 'detail', params: {id: post.id, title: post.title, body: post.body} }">
+        <router-link :to="{ name: 'detail', params: {id: post.id, title: post.title, body: post.body} }" @click="addPostToHistoryComp(post.id, post.title, post.body)">
         <img src="src/assets/nature.jpg">
         <p class="boldText"> {{ post.title }}</p>
         </router-link>
@@ -56,6 +56,15 @@
             return this.posts.filter((post) => {
               return post.title.match(this.search);
             });
+          },
+        },
+        methods: {
+          addPostToHistoryComp(val){
+            this.$store.dispatch('transforPostToHistoryComp', { 
+              pTitle: val.post.title,
+              pBody: val.post.body,
+              pId: val.post.id
+            })
           },
         }
       }

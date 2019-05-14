@@ -26,10 +26,14 @@
     data: function() {
       return {
         current: null,
-        posts: [],
         createTitle: '',
         createBody: '',
         visiblePostID: '',
+      }
+    },
+    computed: {
+      posts(){
+        return this.$store.state.posts
       }
     },
     created: function() {

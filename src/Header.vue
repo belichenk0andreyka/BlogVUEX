@@ -1,7 +1,7 @@
 <template>
 <div class="header">
   <input type="text" v-model="search" class="header_input_search" placeholder="Search" @input="saveMessage(search)" />
-  <img src="src/assets/milk.png">
+  <router-link :to="{ name: 'pagination' }"><img src="src/assets/milk.png"></router-link>
   <div class="header_div_inputs">
     <input type="text" v-model="createTitle" class="created"/>
     <p><input type="text" v-model="createBody" class="createBody"/></p>
@@ -29,7 +29,8 @@
       addPost(){
         this.$store.dispatch('transforTitleAndBody', { // как вызвать actions с объект с параметром
           sTitle: this.createTitle,
-          sBody: this.createBody
+          sBody: this.createBody,
+          sId: Date.now()
         })
       },
     }
