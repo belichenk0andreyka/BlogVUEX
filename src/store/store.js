@@ -1,5 +1,5 @@
 import vue from 'vue'
-import vuex from 'vuex' 
+import vuex from 'vuex'
 import axios from 'axios'
 import Vue from 'vue';
 
@@ -21,7 +21,7 @@ export default new vuex.Store({
         console.log(error);
       })
     },
-    transferTitleAndBody({commit}, payload){ // мутация которая изменяет сосотаяние в sSearch
+    transforTitleAndBody({commit}, payload){ // мутация которая изменяет сосотаяние в sSearch
       const todo = {
         title: payload.sTitle,
         body: payload.sBody
@@ -37,7 +37,7 @@ export default new vuex.Store({
     SET_POSTS(state, posts) {
       state.posts = posts
     },
-    transferSearch(state, payload){ // мутация которая изменяет сосотаяние в sSearch
+    transforSearch(state, payload){ // мутация которая изменяет сосотаяние в sSearch
       state.sSearch = payload
     },
     ADD_TODO (state, todoObject) {

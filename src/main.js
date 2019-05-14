@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Header from './Header.vue'
-import History from './History.vue'
 import VueRouter from 'vue-router'
+import store from './store/store.js'
 
 Vue.use(VueRouter)
 
@@ -23,11 +23,10 @@ var router = new VueRouter({
 })
 
 Vue.component('header-self',  Header)
-Vue.component('app-history',  History)
-export const eventEmitter = new Vue()
 
 new Vue({
   el: '#app',
   render: h => h(App),
+  store,
   router: router,
 }).$mount('#app');
