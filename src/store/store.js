@@ -55,7 +55,12 @@ export default new vuex.Store({
       state.posts.unshift(todoObject)
     },
     ADD_TODO_HISTORY (state, todohistoryObject) {
-      state.historyPosts.unshift(todohistoryObject)
+      if (state.historyPosts.length >5) {
+        state.historyPosts.pop()
+        state.historyPosts.unshift(todohistoryObject)
+      } else {
+        state.historyPosts.unshift(todohistoryObject)
+      }
     },
   },
 })

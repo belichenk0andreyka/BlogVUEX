@@ -1,81 +1,88 @@
 <template>
-  <div class = "app">
-    <ul>
-      <li v-for="(post, index) in paginatedData" class="post" :key="index">
-        <router-link :to="{ name: 'detail', params: {id: post.id, title: post.title, body: post.body} }" @click="addPostToHistoryComp(post.id, post.title, post.body)">
-        <img src="src/assets/nature.jpg">
-        <p class="boldText"> {{ post.title }}</p>
-        </router-link>
-        <p> {{ post.body }}</p>
-      </li>
-      </ul>
-        <div class="allpagination">
-          <button type="button" @click="page -=1" v-if="page > 0" class="prev"><<</button>
-          <div class="pagin">
-            <button class="item"
-            v-for="n in evenPosts"
-            :key="n.id"
-            v-bind:class="{'selected': current === n.id}"
-            @click="page=n-1">{{ n }} </button>
-          </div>
-          <button type="button" @click="page +=1" class="next" v-if="page < evenPosts-1">>></button>
-        </div>
-      </div>
-    </template>
+<div class="app">
+<ul>
+  <template v-for="(post, index) in paginatedData">
+    <li class="post" :key="index" @click="addPostToHistoryComp(post)">
+      <img src="src/assets/nature.jpg">
+      <p class="boldText">{{ post.title }}</p>
+      <p>{{ post.body }}</p>
+    </li>
+  </template>
+</ul>
+<div class="allpagination">
+  <button type="button" @click="page -=1" v-if="page > 0" class="prev"><<</button>
+  <div class="pagin">
+    <button
+      class="item"
+      v-for="n in evenPosts"
+      :key="n.id"
+      v-bind:class="{'selected': current === n.id}"
+      @click="page=n-1"
+    >{{ n }}</button>
+  </div>
+  <button type="button" @click="page +=1" class="next" v-if="page < evenPosts-1">>></button>
+</div>
+</div>
+</template>
 
-    <script>
-      import {mapState} from 'vuex'
-      export default {
-        name: 'app',
-        data () {
-          return {
-            current: null,
-            page: 0,
-            visiblePostID: '',
-          }
-        },
-        mounted(){
-          this.$store.dispatch('loadPosts')
-        },
-        computed: {
-          posts(){
-            return this.$store.state.posts
-          },
-          search(){
-            return this.$store.state.sSearch
-          },
-          evenPosts: function(posts){
-            return Math.ceil(this.posts.length/6);
-          },
-          paginatedData() {
-            const start = this.page * 6;
-            const end = start + 6;
-            return this.filteredPosts.slice(start, end);
-          },
-          filteredPosts() {
-            return this.posts.filter((post) => {
-              return post.title.match(this.search);
-            });
-          },
-        },
-        methods: {
-          addPostToHistoryComp(val){
-            this.$store.dispatch('transforPostToHistoryComp', { 
-              pTitle: val.post.title,
-              pBody: val.post.body,
-              pId: val.post.id
-            })
-          },
-        }
-      }
-    </script>
+<script>
+import { mapState } from "vuex";
+export default {
+name: "app",
+data() {
+return {
+  current: null,
+  page: 0,
+  visiblePostID: ""
+};
+},
+mounted() {
+this.$store.dispatch("loadPosts");
+},
+computed: {
+posts() {
+  return this.$store.state.posts;
+},
+search() {
+  return this.$store.state.sSearch;
+},
+evenPosts: function(posts) {
+  return Math.ceil(this.posts.length / 6);
+},
+paginatedData() {
+  const start = this.page * 6;
+  const end = start + 6;
+  return this.filteredPosts.slice(start, end);
+},
+filteredPosts() {
+  return this.posts.filter(post => {
+    return post.title.match(this.search);
+  });
+}
+},
+methods: {
+addPostToHistoryComp(post) {
+  this.$store.dispatch("transforPostToHistoryComp", {
+    pTitle: post.title,
+    pBody: post.body,
+    pId: post.id
+  });
+
+  this.$router.push({
+    name: "detail",
+    params: { id: post.id, title: post.title, body: post.body }
+  });
+}
+}
+};
+</script>
 
     <style scoped>
       .app{
         background-color: #FFFFFF;
         width: 100%;
         height: 100%;
-        /* background-size: cover; */
+        position: absolute;
       }
 
       .boldText{
