@@ -117,14 +117,12 @@ addPostToHistoryComp(post) {
         list-style-type: none;
       }
       .allpagination{
-        margin-top: -20px;
         position: relative;
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
+        width: 70%;
+        margin: -20px auto 0px auto;
         display: flex;
         flex-direction: row;
-        justify-content: space-center;
+        justify-content: center;
       }
 
     </style>

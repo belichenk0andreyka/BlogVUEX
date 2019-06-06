@@ -27,7 +27,7 @@
     margin-left: auto;
     mergin-right: auto;
     height: 100%;
-    position: absolute;
+    position: relative;
   }
   ul{
     padding-top: 20px;
@@ -52,8 +52,8 @@
     height:250px;
   }
   .historyPost{
-    height: 450px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
     list-style-type: none;
   }
 </style>
