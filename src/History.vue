@@ -23,30 +23,37 @@
 
 <style scoped>
   .history{
-    border-top: 5px solid #494949;
-    width: 80%;
-    margin: 932px 0px 0px 175px;
-    height: 100px;
-    position: relative;
+    width: 99%;
+    margin-left: auto;
+    mergin-right: auto;
+    height: 100%;
+    position: absolute;
   }
   ul{
-    margin-left: -10px;
+    padding-top: 20px;
+    border-top: 5px solid #494949;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
     display: grid;
-    grid-template-columns: 500px 500px 500px;
-    grid-template-rows: 450px 400px;
+    grid-template-columns: 34% 34% 34%;
+    grid-template-rows: 50% 50% ;
+    height: 100%;
   }
   ul li p{
     width: 450px;
   }
   li img{
-    vertical-align:top;
+    /* vertical-align:top; */
     width: 450px;
     height:250px;
   }
   .historyPost{
-    height: 500px;
+    height: 450px;
     width: 500px;
-    /* border: 1px solid #4A535C; */
     list-style-type: none;
   }
 </style>

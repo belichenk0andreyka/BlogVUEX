@@ -1,12 +1,18 @@
 <template>
 <div class="header">
-  <input type="text" v-model="search" class="header_input_search" placeholder="Search" @input="saveMessage(search)" />
-  <router-link :to="{ name: 'pagination' }"><img src="src/assets/milk.png"></router-link>
-  <div class="header_div_inputs">
-    <input type="text" v-model="createTitle" class="created"/>
-    <p><input type="text" v-model="createBody" class="createBody"/></p>
+  <div class="header_div_search">
+    <input type="text" v-model="search" class="header_input_search" placeholder="Search" @input="saveMessage(search)" />
   </div>
-  <button  @click="addPost()" class="addPost">AddPost</button>
+  <div class="pictureDesignMilk">
+    <router-link :to="{ name: 'pagination' }"><img src="src/assets/milk.png"></router-link>
+  </div>
+  <div>
+    <div class="header_div_inputs">
+      <input type="text" v-model="createTitle" class="created"/>
+      <p><input type="text" v-model="createBody" class="createBody"/></p>
+    </div>
+    <button  @click="addPost()" class="addPost">AddPost</button>
+  </div>
 </div>
 </template>
 
@@ -41,31 +47,36 @@
 
   .header{
     width: 80%;
-    height:100%;
+    height:110%;
     border-bottom: 5px solid #494949;
-    margin-left: 175px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .header_div_search{
+    padding-top: 40px;
+
   }
   .header_input_search{
-    margin: 60px 0px 0px  150px;
-    position: absolute;
     width:340px;
     height: 25px;
-    padding-left: 10px;
+
   }
   .header_input_search::placeholder{
     color: #000000;
     padding-right: 10px;
     text-align: right;
   }
-  .header img{
+
+  .pictureDesignMilk img{
     width: 200px;
     height: 100px;
-    margin-left: 650px;
   }
-  .header_div_inputs{
+  /* .header_div_inputs{
     float: right;
-    margin: 10px 245px 0px 0px;
-  }
+  } */
   .created, .createBody{
     width: 340px;
     height: 25px;
@@ -86,7 +97,7 @@
     padding: .5em 1em;
     outline: none;
     width: 350px;
-    margin: -15px 0px 10px 920px;
+    margin: 0px 0px 10px 6px;
     border-radius: 3px;
     background: #2278BA;
     box-shadow:

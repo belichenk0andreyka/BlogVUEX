@@ -10,17 +10,20 @@
   </template>
 </ul>
 <div class="allpagination">
-  <button type="button" @click="page -=1" v-if="page > 0" class="prev"><<</button>
-  <div class="pagin">
-    <button
-      class="item"
-      v-for="n in evenPosts"
-      :key="n.id"
-      v-bind:class="{'selected': current === n.id}"
-      @click="page=n-1"
-    >{{ n }}</button>
+  <div class="next">
+    <button type="button" @click="page -=1" v-if="page > 0"><<</button>
   </div>
-  <button type="button" @click="page +=1" class="next" v-if="page < evenPosts-1">>></button>
+    <div>
+      <button
+        v-for="n in evenPosts"
+        :key="n.id"
+        v-bind:class="{'selected': current === n.id}"
+        @click="page=n-1"
+      >{{ n }}</button>
+    </div>
+    <div>
+      <button type="button" @click="page +=1" v-if="page < evenPosts-1">>></button>
+    </div>
 </div>
 </div>
 </template>
@@ -80,9 +83,9 @@ addPostToHistoryComp(post) {
     <style scoped>
       .app{
         background-color: #FFFFFF;
-        width: 100%;
+        width: 99%;
         height: 100%;
-        position: absolute;
+        position: relative;
       }
 
       .boldText{
@@ -90,59 +93,38 @@ addPostToHistoryComp(post) {
         font-size: 20px;
       }
       ul{
-        margin-left: 170px;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-left: auto;
+        margin-right: auto;
         display: grid;
-        grid-template-columns: 500px 500px 500px;
-        grid-template-rows: 450px 400px;
+        grid-template-columns: 34% 34% 34%;
+        grid-template-rows: 40% 40%;
       }
       ul li p{
-        width: 450px;
+        width: 445px;
       }
       li img{
         vertical-align:top;
-        width: 450px;
+        width: 445px;
         height:250px;
       }
       .post{
-        height: 500px;
-        width: 500px;
-        /* border: 1px solid #4A535C; */
+        height: 460px;
+        width: 495px;
         list-style-type: none;
       }
-      .prev{
-        float: left;
-        position: absolute;
-        margin-left: 330px;
-        margin-top: -4px;
-      }
-      .next{
-        margin-top: -4px;
-        margin-left: 1170px;
-        position: absolute;
-      }
-      .item{
-        display: inline-block;
-        width: 25px;
-        height: 20px;
-        margin: 0px 10px 0px 10px;
-        text-align: center;
-        border: solid 1px #333;
-        cursor: pointer;
-        transition: background .3s;
-      }
-      .selected{
-        background: #ccc;
-      }
-      .pagin{
-        margin-left: 400px;
-        float: left;
-        position: absolute;
-      }
       .allpagination{
-        padding-top: 10px;
-        height: 40px;
-        border-bottom: 5px solid #494949;
-        width: 80%;
-        margin-left: 175px;
+        margin-top: -20px;
+        position: relative;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-center;
       }
+
     </style>

@@ -59,18 +59,18 @@
 
 <style scoped>
   .post{
-    margin: 30px 0 0 400px;
-    position: absolute;
-    width: 1000px;
+    margin: 20px 0px 0px 200px;
+    position: relative;
+    width: 80%;
   }
   .information{
-    margin: 620px 0px 0px 30px;
+    margin: 0px 0px 0px 30px;
     text-align: center;
   }
   .post_img_nature{
     width: 1000px;
     height: 600px;
-    margin-left: 30px;
-    position: absolute;
+    margin-left: 230px;
+    position: relative;
   }
 </style>

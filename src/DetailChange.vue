@@ -1,6 +1,6 @@
 <template>
-  <div class="post">
-    <div class="tableChange"> 
+  <div class="detailChangePost">
+    <div class="tableChange">
       <div>
         <p class="editText">Edit your title:</p>
         <p><textarea  v-model="dTitle" class="changeTitle"></textarea></p>
@@ -9,7 +9,9 @@
       </div>
       <router-link :to="{ name:'detail', params: { title: dTitle, body: dBody} }"><button type="button" @click="changePost(id, title, body)" class="apply">To apply</button></router-link>
     </div>
-    <img src="/src/assets/nature.jpg" >
+    <div>
+      <img src="/src/assets/nature.jpg" >
+    </div>
   </div>
 </template>
 
@@ -39,10 +41,19 @@
 </script>
 
 <style scoped>
+  .detailChangePost{
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-center;
+  }
   .tableChange{
-    width: 450px;
-    height: 400px;
-    margin: 75px 0px 0px 250px;
+    width: 500px;
+    height: 450px;
+    margin: 100px 50px 100px auto;
     border: 1px solid #000000;
     border-radius: 10px;
   }
@@ -50,22 +61,22 @@
   margin-left: 40px;
 }
   .changeTitle{
-    height: 75px;
+    height: 95px;
   }
   .changeBody{
-    height: 150px;
+    height: 170px;
   }
-  .post p textarea{
-    width: 400px;
+  .detailChangePost p textarea{
+    width: 450px;
     margin-left: 20px
   }
-  .post button{
+  .detailChangePost button{
     margin: 0px 0px 0px 10px;
   }
-  .post img{
+  .detailChangePost div img{
     width: 800px;
     height: 450px;
+    margin: 100px 50px 100px auto;
     position: relative;
-    margin: -450px 0px 0px 900px;
   }
 </style>

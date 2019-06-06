@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-// import Header from './Header.vue'
-// import History from './History.vue'
 import VueRouter from 'vue-router'
 import store from './store/store.js'
 
@@ -23,16 +21,9 @@ var router = new VueRouter({
   ]
 })
 
-// Vue.component('app-header',  Header),
-// Vue.component('app-history',  History)
-
 
 new Vue({
   el: '#app',
-  // components: {
-  //   'app-header': Header,
-  //   'app-history': History
-  // },
   render: h => h(App),
   store,
   router: router,
